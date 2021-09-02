@@ -13,7 +13,7 @@
 		4D1FBB9C26E0A99500EB1864 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1FBB9B26E0A99500EB1864 /* Extension.swift */; };
 		4D1FBB9E26E0B41400EB1864 /* ReelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1FBB9D26E0B41400EB1864 /* ReelView.swift */; };
 		4D1FBBA026E0BAE100EB1864 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1FBB9F26E0BAE100EB1864 /* InfoView.swift */; };
-		4D1FBBA226E0CCB200EB1864 /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1FBBA126E0CCB200EB1864 /* GameOverView.swift */; };
+		4D1FBBA426E0DAE900EB1864 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1FBBA326E0DAE900EB1864 /* PlaySound.swift */; };
 		4DD051AF26DE1352006C0FA1 /* Slot_MachineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD051AE26DE1352006C0FA1 /* Slot_MachineApp.swift */; };
 		4DD051B126DE1352006C0FA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD051B026DE1352006C0FA1 /* ContentView.swift */; };
 		4DD051B326DE1355006C0FA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DD051B226DE1355006C0FA1 /* Assets.xcassets */; };
@@ -35,7 +35,7 @@
 		4D1FBB9B26E0A99500EB1864 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		4D1FBB9D26E0B41400EB1864 /* ReelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelView.swift; sourceTree = "<group>"; };
 		4D1FBB9F26E0BAE100EB1864 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
-		4D1FBBA126E0CCB200EB1864 /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		4D1FBBA326E0DAE900EB1864 /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
 		4DD051AB26DE1352006C0FA1 /* Slot Machine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slot Machine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD051AE26DE1352006C0FA1 /* Slot_MachineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slot_MachineApp.swift; sourceTree = "<group>"; };
 		4DD051B026DE1352006C0FA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -124,7 +124,6 @@
 				4D1FBB9726E0A6CA00EB1864 /* LogoView.swift */,
 				4D1FBB9D26E0B41400EB1864 /* ReelView.swift */,
 				4D1FBB9F26E0BAE100EB1864 /* InfoView.swift */,
-				4D1FBBA126E0CCB200EB1864 /* GameOverView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,6 +133,7 @@
 			children = (
 				4D1FBB9926E0A70400EB1864 /* Modifiers.swift */,
 				4D1FBB9B26E0A99500EB1864 /* Extension.swift */,
+				4D1FBBA326E0DAE900EB1864 /* PlaySound.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -217,12 +217,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D1FBB9E26E0B41400EB1864 /* ReelView.swift in Sources */,
+				4D1FBBA426E0DAE900EB1864 /* PlaySound.swift in Sources */,
 				4D1FBB9C26E0A99500EB1864 /* Extension.swift in Sources */,
 				4D1FBB9A26E0A70400EB1864 /* Modifiers.swift in Sources */,
 				4DD051B126DE1352006C0FA1 /* ContentView.swift in Sources */,
 				4D1FBB9826E0A6CA00EB1864 /* LogoView.swift in Sources */,
 				4DD051AF26DE1352006C0FA1 /* Slot_MachineApp.swift in Sources */,
-				4D1FBBA226E0CCB200EB1864 /* GameOverView.swift in Sources */,
 				4D1FBBA026E0BAE100EB1864 /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
