@@ -8,7 +8,65 @@
 import SwiftUI
 
 struct ContentView: View {
+	let symbol = ["gfx-bell", "gfx-cherry", "gfx-coin", "gfx-grape", "gfx-seven", "gfx-strawberry"]
+
+	@State private var highScore: Int = 0
+	@State private var coins: Int = 100
+	@State private var betAmount: Int = 10
+	@State private var reels: Array = [0,1,2]
 	@State private var showingInfoView: Bool = false
+	@State private var isActiveBet10: Bool = true
+	@State private var isActiveBet20: Bool = false
+
+	//MARK: - FUNCTIONS
+
+	//SPIN THE REELS
+	func spinReels() {
+		reels = reels.map({ _ in
+			Int.random(in: 0...symbol.count - 1)
+		})
+	}
+
+	//CHECK WINNING
+	func checkWinning() {
+		if reels[0] == reels[1] && reels[1] == reels[2] && reels[0] == reels[2] {
+			//PLAYER WINS
+			playerWins()
+
+			//NEW HIGH SCORE
+			newHighScore()
+		} else {
+			//PLAYER LOSES
+			playerLoses()
+		}
+	}
+
+	func playerWins() {
+		coins += betAmount * 10
+	}
+
+	func newHighScore() {
+		highScore = coins
+	}
+
+	func playerLoses() {
+		coins -= betAmount
+	}
+
+	func activateBet20() {
+		betAmount = 20
+		isActiveBet20 = true
+		isActiveBet10 = false
+	}
+
+	func activateBet10() {
+		betAmount = 10
+		isActiveBet10 = true
+		isActiveBet20 = false
+	}
+
+
+	//GAME OVER
 
     var body: some View {
 		ZStack {
@@ -28,7 +86,7 @@ struct ContentView: View {
 						Text("Your\nCoins".uppercased())
 							.scoreLabelStyle()
 							.multilineTextAlignment(.trailing)
-						Text("100")
+						Text("\(coins)")
 							.scoreNumberStyle()
 							.modifier(ScoreNumberModifier())
 							.modifier(ShadowModifier())
@@ -38,7 +96,7 @@ struct ContentView: View {
 					Spacer()
 
 					HStack {
-						Text("200")
+						Text("\(highScore)")
 							.scoreNumberStyle()
 							.modifier(ScoreNumberModifier())
 						Text("High\nScore".uppercased())
@@ -53,7 +111,7 @@ struct ContentView: View {
 					//MARK: - REEL n1
 					ZStack {
 						ReelView()
-						Image("gfx-bell")
+						Image(symbol[reels[0]])
 							.resizable()
 							.modifier(ImageModifier())
 					}
@@ -62,7 +120,7 @@ struct ContentView: View {
 						//MARK: - REEL n2
 						ZStack {
 							ReelView()
-							Image("gfx-seven")
+							Image(symbol[reels[1]])
 								.resizable()
 								.modifier(ImageModifier())
 						}
@@ -72,7 +130,7 @@ struct ContentView: View {
 						//MARK: - REEL n3
 						ZStack {
 							ReelView()
-							Image("gfx-cherry")
+							Image(symbol[reels[2]])
 								.resizable()
 								.modifier(ImageModifier())
 						}
@@ -81,7 +139,11 @@ struct ContentView: View {
 
 					//MARK: - SPIN BUTTON
 					Button(action: {
-						print("Spin the reels")
+						//SPIN REELS
+						self.spinReels()
+
+						//CHECK WINNING
+						self.checkWinning()
 					}, label: {
 						Image("gfx-spin")
 							.renderingMode(.original)
@@ -98,18 +160,18 @@ struct ContentView: View {
 					//MARK: - BET 20
 					HStack(alignment: .center, spacing: 10) {
 						Button(action: {
-							print("20 Coins")
+							self.activateBet20()
 						}, label: {
 							Text("20")
 								.fontWeight(.heavy)
-								.foregroundColor(.white)
+								.foregroundColor(isActiveBet20 ? Color("ColorYellow") : Color(.white))
 								.modifier(BetNumberModifier())
 						})
 						.modifier(BetCapsuleModifier())
 
 						Image("gfx-casino-chips")
 							.resizable()
-							.opacity(0)
+							.opacity(isActiveBet20 ? 1 : 0)
 							.modifier(CasinoChipsModifier())
 					}
 
@@ -117,15 +179,14 @@ struct ContentView: View {
 					HStack(alignment: .center, spacing: 10) {
 						Image("gfx-casino-chips")
 							.resizable()
-							.opacity(1)
+							.opacity(isActiveBet10 ? 1 : 0)
 							.modifier(CasinoChipsModifier())
-
 						Button(action: {
-							print("10 Coins")
+							self.activateBet10()
 						}, label: {
 							Text("10")
 								.fontWeight(.heavy)
-								.foregroundColor(.yellow)
+								.foregroundColor((isActiveBet10 ? Color("ColorYellow") : Color(.white)))
 								.modifier(BetNumberModifier())
 						})
 						.modifier(BetCapsuleModifier())
